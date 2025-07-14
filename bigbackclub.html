@@ -29,6 +29,31 @@
             padding: 20px;
         }
 
+        .gallery-item {
+            background-color: #F5FFFA; /* MintCream */
+            padding: 10px;
+            border: 1px solid #C8E6C9;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden; /* Ensures image fits within rounded corners */
+        }
+
+        .gallery-item img {
+            max-width: 100%;
+            height: 200px; /* Fixed height for gallery images */
+            object-fit: cover; /* Ensures images cover the area without distortion */
+            border-radius: 5px; /* Slightly rounded corners for images */
+            border: none; /* No extra border */
+            margin-bottom: 10px;
+        }
+
+        .gallery-item p {
+            font-size: 0.9em;
+            color: #555;
+            margin: 0;
+            text-align: center;
+        }
+
         /* Navbar Styling */
         .navbar {
             background-color: #2E8B57; /* SeaGreen - deep green for navbar */
@@ -341,25 +366,48 @@
     </section>
 
     <!-- Events Section -->
-    <section id="events" class="section">
+        <section id="events" class="section">
         <div class="container">
-            <h2>Recent Events</h2>
-            <div class="grid">
-                <div class="grid-item">
-                    <h3>Korean Barbeque</h3>
-                    <img src="kbbq.jpg" alt="KBBQ">
-                    <p><strong>Date:</strong> May 15th, 2025</p>
-                    <p><strong>Location:</strong> KOGI Korean BBq</p>
+            <h2>Upcoming Events</h2>
+            <p class="mt-8">
+                Stay tuned for more exciting events! Follow our social media for the latest updates.
+            </p>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="media-gallery" class="section">
+        <div class="container">
+            <h2>Media Gallery</h2>
+            <p>A look back at some of our favorite Big Back Club moments!</p>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="bonfirebigback1.jpg" alt="Big Back Bonfire">
+                    <p>Big Back Bonfire</p>
                 </div>
-                 <div class="grid-item">
-                    <h3>Big Back Bonfire</h3>
-                    <img src="bonfirebigback1.jpg" alt="Bonfire">
-                    <p><strong>Date:</strong> May 9th, 2025</p>
-                    <p><strong>Location:</strong> La Jolla Shores</p>
+                <div class="gallery-item">
+                    <img src="kbbq.jpg" alt="Korean BBQ">
+                    <p>Korean Barbeque</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/300x200/6B8E23/ffffff?text=Event+Photo+3" alt="Club Event 3">
+                    <p>Bake-Off Creations</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/300x200/1A4D2A/ffffff?text=Event+Photo+4" alt="Club Event 4">
+                    <p>Potluck Gathering</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/300x200/2E8B57/ffffff?text=Event+Photo+5" alt="Club Event 5">
+                    <p>Outdoor Picnic</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/300x200/3CB371/ffffff?text=Event+Photo+6" alt="Club Event 6">
+                    <p>Cooking Workshop</p>
                 </div>
             </div>
             <p class="mt-8">
-                Stay tuned for more exciting events! Follow our social media for the latest updates.
+                Have photos to share? Let us know!
             </p>
         </div>
     </section>
