@@ -16,6 +16,13 @@
             scroll-behavior: smooth;
         }
 
+        .centered-link {
+            display: block; /* Make it a block-level element */
+            text-align: center; /* Center the text within its block */
+            margin-top: 10px; /* Add some space above it if needed */
+            margin-bottom: 10px; /* Add some space below it if needed */
+        }
+
         .container {
             max-width: 960px;
             margin: 0 auto;
@@ -101,7 +108,7 @@
         }
 
         .section img {
-            max-width: 100%;
+            max-width: 70%; /* Changed from 100% to 70% */
             height: auto;
             border: 4px solid #6B8E23; /* OliveDrab border for images */
             border-radius: 8px;
@@ -243,6 +250,9 @@
                 flex-direction: column;
                 align-items: center;
             }
+            .section img { /* Adjust main image size for small screens */
+                max-width: 90%;
+            }
         }
     </style>
 </head>
@@ -265,7 +275,10 @@
         <div class="container">
             <h1>Welcome to the Big Back Club!</h1>
             <img
-                src="bonfirebigback1.jpg">
+                src="bonfirebigback1.jpg"
+                alt="Big Back Club Logo"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x250/2E8B57/ffffff?text=Big+Back+Club+Logo';"
+            />
             <p>
                 Unashamed relaxation starts here. We celebrate the ‘big back’ within ourselves, through a haven against the hustle. Join us in reclaiming the joy of doing nothing, one snack at a time.
             </p>
@@ -273,7 +286,7 @@
         </div>
     </section>
 
-        <!-- News Section -->
+    <!-- News Section -->
     <section id="news" class="section">
         <div class="container">
             <h2>Latest News & Updates</h2>
@@ -282,13 +295,13 @@
                 <div class="grid-item">
                     <h3>Officer Applications Now Open!</h3>
                     <p>We are now accepting applications for our Marketing team, Events team, Secretary, and Treasurer</p>
-                    <a href = "https://forms.gle/sswGXBywDNNQvUnA8"> Officer Application </a>
+                    <a href = "https://forms.gle/sswGXBywDNNQvUnA8" class = "centered-link"> Officer Application </a>
                     <p class="text-sm text-gray-600 mt-2"><em>Posted: May 28th, 2025</em></p>
                 </div>
                 <div class="grid-item">
                     <h3>Fill out our interest form!</h3>
                     <p>Want to join our club? Fill out the form and let us know your favorite food!</p>
-                    <a href = "https://forms.gle/TfWb6Vtptg8HbcKp7"> Interest Form </a>
+                    <a href = "https://forms.gle/TfWb6Vtptg8HbcKp7" class = "centered-link"> Interest Form </a>
                     <p class="text-sm text-gray-600 mt-2"><em>Posted: April 23rd, 2025</em></p>
                 </div>
             </div>
@@ -306,10 +319,6 @@
                 The Big Back Club was founded in 2025 by a group of food enthusiasts who believed that sharing meals
                 is one of the best ways to build connections and friendships. Our mission is to create a welcoming
                 space for everyone to explore diverse cuisines, discover new eateries, and simply enjoy good company.
-            </p>
-            <p>
-                We organize a variety of food-related social events, from potlucks and restaurant outings to cooking
-                challenges and food-themed game nights. We're more than just a club; we're a family that loves to eat!
             </p>
 
             <h2 class="mt-10">Meet Our Co-Presidents</h2>
@@ -334,32 +343,19 @@
     <!-- Events Section -->
     <section id="events" class="section">
         <div class="container">
-            <h2>Upcoming Events</h2>
-            <p>Get ready for some delicious fun! Here's what's on our plate:</p>
+            <h2>Recent Events</h2>
             <div class="grid">
                 <div class="grid-item">
-                    <h3>Pizza & Game Night!</h3>
-                    <img src="https://placehold.co/280x180/4CAF50/333?text=Pizza+Night" alt="Pizza Night">
-                    <p>Join us for a relaxed evening of pizza, board games, and great conversation. All dietary restrictions welcome!</p>
-                    <p><strong>Date:</strong> July 25, 2025</p>
-                    <p><strong>Time:</strong> 6:00 PM - 9:00 PM</p>
-                    <p><strong>Location:</strong> Student Union Game Room</p>
+                    <h3>Korean Barbeque</h3>
+                    <img src="kbbq.jpg" alt="KBBQ">
+                    <p><strong>Date:</strong> May 15th, 2025</p>
+                    <p><strong>Location:</strong> KOGI Korean BBq</p>
                 </div>
-                <div class="grid-item">
-                    <h3>Local Food Truck Tour</h3>
-                    <img src="https://placehold.co/280x180/4CAF50/333?text=Food+Truck" alt="Food Truck Tour">
-                    <p>Explore the best local food trucks with us! We'll visit a few popular spots and sample their unique offerings.</p>
-                    <p><strong>Date:</strong> August 10, 2025</p>
-                    <p><strong>Time:</strong> 1:00 PM - 4:00 PM</p>
-                    <p><strong>Location:</strong> Downtown Food Truck Park</p>
-                </div>
-                <div class="grid-item">
-                    <h3>Bake-Off Challenge: Cookies!</h3>
-                    <img src="https://placehold.co/280x180/4CAF50/333?text=Bake+Off" alt="Bake Off Challenge">
-                    <p>Show off your baking skills in our friendly cookie bake-off! Prizes for taste, creativity, and presentation.</p>
-                    <p><strong>Date:</strong> August 28, 2025</p>
-                    <p><strong>Time:</strong> 5:30 PM - 8:00 PM</p>
-                    <p><strong>Location:</strong> Campus Kitchen Labs</p>
+                 <div class="grid-item">
+                    <h3>Big Back Bonfire</h3>
+                    <img src="bonfirebigback1.jpg" alt="Bonfire">
+                    <p><strong>Date:</strong> May 9th, 2025</p>
+                    <p><strong>Location:</strong> La Jolla Shores</p>
                 </div>
             </div>
             <p class="mt-8">
@@ -376,17 +372,17 @@
                 Want to join the Big Back Club community? Reach out to us on our platforms!
             </p>
             <div class="social-links">
-                <a href="https://discord.gg/your-discord-link" target="_blank" rel="noopener noreferrer">
+                <a href="https://discord.com/invite/5qJtbnwSRk" target="_blank" rel="noopener noreferrer">
                     Discord
                 </a>
-                <a href="https://www.tiktok.com/@your-tiktok" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.tiktok.com/@ucsdbigbacks" target="_blank" rel="noopener noreferrer">
                     TikTok
                 </a>
-                <a href="https://www.instagram.com/your-instagram" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/ucsdbigbacks" target="_blank" rel="noopener noreferrer">
                     Instagram
                 </a>
-                <a href="https://forms.gle/your-google-form-link" target="_blank" rel="noopener noreferrer">
-                    Google Form
+                <a href="https://forms.gle/TfWb6Vtptg8HbcKp7" target="_blank" rel="noopener noreferrer">
+                    Interest Form
                 </a>
             </div>
         </div>
@@ -398,7 +394,6 @@
     <footer class="footer">
         <div class="container">
             <p>&copy; <script>document.write(new Date().getFullYear())</script> Big Back Club. All rights reserved.</p>
-            <p>Part of Enrique Aranda's Portfolio</p>
         </div>
     </footer>
 
