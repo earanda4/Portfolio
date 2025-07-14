@@ -7,7 +7,7 @@
     <style>
         /* Basic Reset & Body Styling */
         body {
-            font-family: 'Roboto', Arial, sans-serif;
+            font-family: 'Roboto', Arial, sans-serif; /* Changed font to Roboto, with Arial as fallback */
             background-color: #F0FFF0; /* Honeydew - very light green */
             color: #333;
             margin: 0;
@@ -16,42 +16,10 @@
             scroll-behavior: smooth;
         }
 
-        .centered-link {
-            display: block; /* Make it a block-level element */
-            text-align: center; /* Center the text within its block */
-            margin-top: 10px; /* Add some space above it if needed */
-            margin-bottom: 10px; /* Add some space below it if needed */
-        }
-
         .container {
             max-width: 960px;
             margin: 0 auto;
             padding: 20px;
-        }
-
-        .gallery-item {
-            background-color: #F5FFFA; /* MintCream */
-            padding: 10px;
-            border: 1px solid #C8E6C9;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            overflow: hidden; /* Ensures image fits within rounded corners */
-        }
-
-        .gallery-item img {
-            max-width: 100%;
-            height: 200px; /* Fixed height for gallery images */
-            object-fit: cover; /* Ensures images cover the area without distortion */
-            border-radius: 5px; /* Slightly rounded corners for images */
-            border: none; /* No extra border */
-            margin-bottom: 10px;
-        }
-
-        .gallery-item p {
-            font-size: 0.9em;
-            color: #555;
-            margin: 0;
-            text-align: center;
         }
 
         /* Navbar Styling */
@@ -176,7 +144,7 @@
             border: 1px solid #C8E6C9; /* Light Green border */
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            text-align: left;
+            text-align: center; /* Centered text for all grid items */
         }
 
         .grid-item img {
@@ -203,6 +171,76 @@
             font-size: 0.95em;
             margin: 0;
             text-align: center;
+        }
+
+        /* Slideshow Specific Styling */
+        .slideshow-container {
+            position: relative;
+            max-width: 800px; /* Max width of the slideshow */
+            margin: auto;
+            overflow: hidden; /* Hide overflowing parts of images */
+            border: 5px solid #2E8B57; /* Green border for slideshow */
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .mySlides {
+            display: none; /* Hide slides by default */
+            width: 100%;
+        }
+
+        .mySlides img {
+            width: 100%;
+            height: 400px; /* Fixed height for slideshow images */
+            object-fit: cover; /* Ensures images cover the area */
+            border-radius: 5px; /* Slightly rounded corners for images */
+        }
+
+        /* Caption text */
+        .text-caption {
+            color: #f2f2f2;
+            font-size: 1.2em;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+            background-color: rgba(0,0,0,0.6);
+            border-radius: 0 0 8px 8px;
+        }
+
+        /* The dots/bullets/indicators */
+        .dots-container {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #F5FFFA; /* Match grid item background */
+            border-radius: 0 0 8px 8px;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active-dot, .dot:hover {
+            background-color: #2E8B57; /* Active dot color */
+        }
+
+        /* Fading animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
         }
 
         /* Social Links Styling */
@@ -278,6 +316,12 @@
             .section img { /* Adjust main image size for small screens */
                 max-width: 90%;
             }
+            .slideshow-container {
+                max-width: 100%; /* Full width on small screens */
+            }
+            .mySlides img {
+                height: 250px; /* Shorter height for slideshow images on small screens */
+            }
         }
     </style>
 </head>
@@ -290,6 +334,7 @@
                 <li><a href="site.html">Back to Portfolio</a></li>
                 <li><a href="#about-club">About Us</a></li>
                 <li><a href="#events">Events</a></li>
+                <li><a href="#media-gallery">Gallery</a></li>
                 <li><a href="#news">News</a></li>
             </ul>
         </div>
@@ -320,13 +365,13 @@
                 <div class="grid-item">
                     <h3>Officer Applications Now Open!</h3>
                     <p>We are now accepting applications for our Marketing team, Events team, Secretary, and Treasurer</p>
-                    <a href = "https://forms.gle/sswGXBywDNNQvUnA8" class = "centered-link"> Officer Application </a>
+                    <a href = "https://forms.gle/sswGXBywDNNQvUnA8"> Officer Application </a>
                     <p class="text-sm text-gray-600 mt-2"><em>Posted: May 28th, 2025</em></p>
                 </div>
                 <div class="grid-item">
                     <h3>Fill out our interest form!</h3>
                     <p>Want to join our club? Fill out the form and let us know your favorite food!</p>
-                    <a href = "https://forms.gle/TfWb6Vtptg8HbcKp7" class = "centered-link"> Interest Form </a>
+                    <a href = "https://forms.gle/TfWb6Vtptg8HbcKp7"> Interest Form </a>
                     <p class="text-sm text-gray-600 mt-2"><em>Posted: April 23rd, 2025</em></p>
                 </div>
             </div>
@@ -344,6 +389,10 @@
                 The Big Back Club was founded in 2025 by a group of food enthusiasts who believed that sharing meals
                 is one of the best ways to build connections and friendships. Our mission is to create a welcoming
                 space for everyone to explore diverse cuisines, discover new eateries, and simply enjoy good company.
+            </p>
+            <p>
+                We organize a variety of food-related social events, from potlucks and restaurant outings to cooking
+                challenges and food-themed game nights. We're more than just a club; we're a family that loves to eat!
             </p>
 
             <h2 class="mt-10">Meet Our Co-Presidents</h2>
@@ -366,49 +415,51 @@
     </section>
 
     <!-- Events Section -->
-        <section id="events" class="section">
+    <section id="events" class="section">
         <div class="container">
             <h2>Upcoming Events</h2>
+            <p>Get ready for some delicious fun! Here's what's on our plate:</p>
             <p class="mt-8">
                 Stay tuned for more exciting events! Follow our social media for the latest updates.
             </p>
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="media-gallery" class="section">
+    section id="media-gallery" class="section">
         <div class="container">
             <h2>Media Gallery</h2>
             <p>A look back at some of our favorite Big Back Club moments!</p>
-            <div class="gallery-grid">
-                <div class="gallery-item">
+
+            <div class="slideshow-container">
+                <div class="mySlides fade">
                     <img src="bonfirebigback1.jpg" alt="Big Back Bonfire">
-                    <p>Big Back Bonfire</p>
+                    <div class="text-caption">Big Back Bonfire</div>
                 </div>
-                <div class="gallery-item">
+
+                <div class="mySlides fade">
                     <img src="kbbq.jpg" alt="Korean BBQ">
-                    <p>Korean Barbeque</p>
+                    <div class="text-caption">Korean Barbeque</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://placehold.co/300x200/6B8E23/ffffff?text=Event+Photo+3" alt="Club Event 3">
-                    <p>Bake-Off Creations</p>
+
+                <div class="mySlides fade">
+                    <img src="damiankbbq.jpg" alt="Club Event 3">
+                    <div class="text-caption">Treasurer Munching</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://placehold.co/300x200/1A4D2A/ffffff?text=Event+Photo+4" alt="Club Event 4">
-                    <p>Potluck Gathering</p>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://placehold.co/300x200/2E8B57/ffffff?text=Event+Photo+5" alt="Club Event 5">
-                    <p>Outdoor Picnic</p>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://placehold.co/300x200/3CB371/ffffff?text=Event+Photo+6" alt="Club Event 6">
-                    <p>Cooking Workshop</p>
+
+                <div class="mySlides fade">
+                    <img src="pizzabonfire" alt="Club Event 4">
+                    <div class="text-caption">Costco Pizza at the Bonfire</div>
                 </div>
             </div>
-            <p class="mt-8">
-                Have photos to share? Let us know!
-            </p>
+            <br>
+
+            <div class="dots-container">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+            </div>
+
         </div>
     </section>
 
@@ -436,14 +487,64 @@
         </div>
     </section>
 
-
-
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <p>&copy; <script>document.write(new Date().getFullYear())</script> Big Back Club. All rights reserved.</p>
+            <p>Part of Enrique Aranda's Portfolio</p>
         </div>
     </footer>
+
+    <script>
+        let slideIndex = 1;
+        let slideshowInterval; // Variable to hold the interval ID
+
+        // Function to show slides
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active-dot", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active-dot";
+        }
+
+        // Next/previous controls (removed from HTML, but functions remain for auto-slideshow)
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+            // resetSlideshowInterval(); // No need to reset on manual navigation if buttons are gone
+        }
+
+        // Thumbnail image controls (dots)
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+            resetSlideshowInterval(); // Reset timer on manual navigation via dots
+        }
+
+        // Automatic slideshow
+        function autoSlides() {
+            plusSlides(1); // Move to the next slide
+        }
+
+        // Function to reset the slideshow interval
+        function resetSlideshowInterval() {
+            clearInterval(slideshowInterval); // Clear existing interval
+            slideshowInterval = setInterval(autoSlides, 5000); // Set new interval (5 seconds)
+        }
+
+        // Initialize slideshow on window load
+        window.onload = function() {
+            showSlides(slideIndex); // Show the first slide
+            resetSlideshowInterval(); // Start the automatic slideshow
+        };
+    </script>
 
 </body>
 </html>
