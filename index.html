@@ -8,7 +8,7 @@
         /* Basic Reset & Body Styling */
         body {
             font-family: 'Courier New', Courier, monospace; /* Retro-style font */
-            background-color: #e0e0e0; /* Light gray background */
+            background-color: #e0e0e0; /* Light gray background (reverted) */
             color: #333; /* Dark gray text */
             margin: 0;
             padding: 0;
@@ -24,10 +24,10 @@
 
         /* Navbar Styling */
         .navbar {
-            background-color: #444; /* Darker gray for navbar */
+            background-color: #1a2b49; /* Dark blue for navbar (was #444 dark gray) */
             padding: 15px 0;
             text-align: center;
-            border-bottom: 2px solid #222; /* Stronger border */
+            border-bottom: 2px solid #0f1a2b; /* Stronger, darker blue border (was #222) */
         }
 
         .navbar ul {
@@ -45,10 +45,10 @@
 
         .navbar a {
             text-decoration: none;
-            color: #eee; /* Light text for contrast */
+            color: #eee; /* Light text for contrast (kept) */
             font-size: 1.2em;
             padding: 8px 12px;
-            border: 1px solid #666; /* Simple border for buttons */
+            border: 1px solid #4a69bd; /* Medium blue border for buttons (was #666) */
             border-radius: 3px;
             transition: background-color 0.3s, color 0.3s, border-color 0.3s;
             display: block; /* Make the whole padding area clickable */
@@ -56,30 +56,30 @@
 
         .navbar a:hover,
         .navbar a:focus {
-            background-color: #666; /* Hover effect */
+            background-color: #4a69bd; /* Hover effect: medium blue (was #666) */
             color: #fff;
-            border-color: #888;
+            border-color: #5c7cfa; /* Lighter blue border on hover (was #888) */
         }
 
         /* Section Styling */
         .section {
-            background-color: #fff; /* White background for sections */
+            background-color: #fff; /* White background for sections (reverted) */
             margin-bottom: 20px;
             padding: 40px;
-            border: 1px solid #ccc; /* Simple border */
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+            border: 1px solid #ccc; /* Simple border (kept) */
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Subtle shadow (kept) */
             text-align: center;
         }
 
         .section h1, .section h2 {
-            color: #555; /* Darker heading color */
+            color: #182b49; /* Dark blue heading color (was #555 dark gray) */
             margin-top: 0;
             margin-bottom: 20px;
             font-size: 2.5em;
         }
 
         .section h3 { /* Added styling for h3 */
-            color: #666;
+            color: #333; /* Changed to dark gray */
             font-size: 1.5em;
             margin-top: -10px; /* Adjust spacing with h1 */
             margin-bottom: 20px;
@@ -89,12 +89,13 @@
             font-size: 1.1em;
             max-width: 700px;
             margin: 0 auto 20px auto;
+            color: #333; /* Dark gray text (kept) */
         }
 
         .section img {
             max-width: 300px;
             height: auto;
-            border: 3px solid #555; /* Retro border for images */
+            border: 3px solid #4a69bd; /* Medium blue border for images (was #555) */
             border-radius: 50%; /* Rounded profile photo */
             margin-bottom: 20px;
             display: block; /* Center image */
@@ -104,21 +105,21 @@
 
         .section .button {
             display: inline-block;
-            background-color: #666;
+            background-color: #182b49; /* Dark blue button (was #666) */
             color: white;
             padding: 10px 20px;
             text-decoration: none;
-            border: 1px solid #444;
+            border: 1px solid #0f1a2b; /* Darker blue border (was #444) */
             border-radius: 3px;
             transition: background-color 0.3s, border-color 0.3s;
         }
 
         .section .button:hover {
-            background-color: #888;
-            border-color: #666;
+            background-color: #4a69bd; /* Medium blue on hover (was #888) */
+            border-color: #5c7cfa; /* Lighter blue on hover (was #666) */
         }
 
-       /* Project Grid Styling */
+        /* Project Grid Styling */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -128,11 +129,11 @@
         }
 
         .project-card {
-            background-color: #f8f8f8; /* Slightly off-white for cards */
-            color: #333;
+            background-color: #f8f8f8; /* Slightly off-white for cards (kept) */
+            color: #333; /* Dark gray text (kept) */
             padding: 20px;
             font-size: 1em;
-            border: 1px solid #ccc;
+            border: 1px solid #ccc; /* Border (kept) */
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             overflow: hidden;
@@ -147,7 +148,7 @@
 
         .project-card h4 {
             font-size: 1.5em;
-            color: #182b49; /* Dark blue for project titles */
+            color: #182b49; /* Dark blue for project titles (kept) */
             margin-top: 0;
             margin-bottom: 10px;
             text-align: center; /* Center project titles */
@@ -160,15 +161,15 @@
         }
 
         .project-card .tech-list {
+            color: #333; /* Changed to dark gray */
             font-size: 0.85em;
-            color: #666;
             margin-bottom: 15px;
             text-align: left; /* Ensure tech list is left-aligned */
         }
 
         .project-card a {
             display: inline-block;
-            background-color: #182b49; /* Dark blue for project links */
+            background-color: #182b49; /* Dark blue for project links (kept) */
             color: white;
             padding: 8px 15px;
             text-decoration: none;
@@ -178,16 +179,16 @@
         }
 
         .project-card a:hover {
-            background-color: #2a4a75; /* Lighter blue on hover */
+            background-color: #2a4a75; /* Lighter blue on hover (kept) */
         }
 
         /* Footer Styling */
         .footer {
-            background-color: #444;
-            color: #eee;
+            background-color: #1a2b49; /* Dark blue for footer (was #444 dark gray) */
+            color: #eee; /* Light text (kept) */
             text-align: center;
             padding: 20px 0;
-            border-top: 2px solid #222;
+            border-top: 2px solid #0f1a2b; /* Darker blue border (was #222) */
             font-size: 0.9em;
         }
 
@@ -333,7 +334,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; <script>document.write(new Date().getFullYear())</script> Enrique Aranda. All rights reserved.</p>
+            <p>&copy; <script>document.write(new Date().getFullYear())</script>Web Design and Development by Enrique Aranda</p>
         </div>
     </footer>
 
