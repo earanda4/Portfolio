@@ -44,15 +44,20 @@
             margin: 0 15px;
         }
 
-        .navbar a {
+          .navbar a {
             text-decoration: none;
-            color: #eee; /* Light text for contrast (kept) */
+            color: #eee; /* Light text for contrast */
             font-size: 1.2em;
-            padding: 8px 12px;
-            border: 1px solid #4a69bd; /* Medium blue border for buttons (was #666) */
+            padding: 8px 12px; /* Keep padding for visual spacing */
+            height: 40px; /* Explicit height */
+            line-height: 24px; /* Adjust line-height to vertically center text within the fixed height */
+            box-sizing: border-box; /* Include padding in height calculation */
+            border: 1px solid #4a69bd; /* Medium blue border for buttons */
             border-radius: 3px;
-            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-            display: block; /* Make the whole padding area clickable */
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.2s;
+            display: flex; /* Use flex to center content within the link itself */
+            align-items: center; /* Vertically center content */
+            justify-content: center; /* Horizontally center content */
         }
 
         .navbar a:hover,
