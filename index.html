@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enrique Aranda - Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600;700&display=swap"
+        rel="stylesheet"
+    />
+    <style>
+        /* Modernized Styling */
+        :root {
+            --primary-blue: #1a2b49;
+            --secondary-blue: #2c4266;
+            --highlight-blue: #4a69bd;
+            --light-blue: #5c7cfa;
+            --dark-text: #222;
+            --light-text: #f0f0f0;
+            --bg-light: #f4f7f6;
+            --bg-white: #fff;
+            --border-color: #e0e0e0;
+        }
+
+        /* Basic Reset & Body Styling */
+        body {
+            font-family: 'Inter', sans-serif; /* Professional body font */
+            background-color: var(--bg-light); /* Off-white background */
+            color: var(--dark-text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Language Switch UX Improvement */
+        .language-switch {
+            position: absolute;
+            top: 15px;
+            right: 30px;
+            font-size: 1em;
+            font-weight: 500;
+            z-index: 1001;
+        }
+
+        .language-switch a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            background-color: var(--bg-white);
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s;
+        }
+
+        .language-switch a:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: var(--primary-blue);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--secondary-blue);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: var(--light-text);
+            font-size: 1.1em;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+            position: relative;
+        }
+
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--light-blue);
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        .navbar a:hover::after,
+        .navbar a:focus::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .navbar a:focus {
+            outline: 2px solid var(--light-blue); /* Accessibility Focus */
+            outline-offset: 2px;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .section-content {
+            background-color: var(--bg-white);
+            padding: 60px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
+            text-align: center; /* Default for headers/visuals */
+        }
+
+        .section h1, .section h2 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .section h1 {
+            font-size: 3.5em;
+            letter-spacing: -1px;
+        }
+
+        .section h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+
+        .section h3 {
+            font-size: 1.5em;
+            color: var(--dark-text);
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        /* UX Improvement: Left-align long paragraphs for readability */
+        .section p {
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            color: #555;
+            text-align: left;
+        }
+        
+        /* Styles for Dynamic Skills Tag Cloud */
+        .skills-container {
+            max-width: 900px;
+            margin: 40px auto 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+            border-top: 1px dashed var(--border-color);
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .skill-tag {
+            background-color: var(--bg-light);
+            color: var(--primary-blue);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            border: 1px solid var(--highlight-blue);
+            cursor: default;
+            transition: background-color 0.3s, color 0.3s, transform 0.2s;
+        }
+
+        .skill-tag:hover {
+            background-color: var(--highlight-blue);
+            color: var(--light-text);
+            transform: scale(1.05);
+        }
+
+        /* Styles for Profile Photo and Buttons */
+        .section img.profile-photo {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border: 4px solid var(--highlight-blue);
+            border-radius: 50%;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .button {
+            display: inline-block;
+            background-color: var(--highlight-blue);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+            border: 1px solid transparent;
+            margin: 5px;
+        }
+
+        .button:hover, .button:focus {
+            background-color: var(--light-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            outline: none;
+        }
+
+        /* Social Bar Styling */
+        .social-bar {
+            margin: 30px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-icon {
+            color: var(--primary-blue);
+            font-size: 2em;
+            transition: color 0.3s, transform 0.2s;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            color: var(--light-blue);
+            transform: scale(1.1);
+        }
+        
+        /* Project Grid and Card Styling - WIDER CARDS IMPLEMENTED HERE */
+        .project-grid {
+            /* Change grid to two columns (50% width each) on larger screens */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            min-height: 480px; 
+            cursor: pointer;
+            perspective: 1000px;
+            position: relative;
+            opacity: 0; 
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            overflow: hidden; 
+            display: flex;
+        }
+        
+        /* Class added by JS when element is visible */
+        .project-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Card Inner Container (The flippable part) */
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            border-radius: 12px;
+            flex-grow: 1; 
+            
+            /* KEY CHANGE: Start rotated 180 degrees so the back face is visible */
+            transform: rotateY(180deg);
+        }
+
+        /* Flip state: Rotate back to 0 to show the front */
+        .project-card .card-inner.flipped {
+            transform: rotateY(0deg);
+        }
+
+        /* Front and Back Faces */
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden; 
+            background-color: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box; 
+        }
+
+        .card-front {
+            /* Default position for the front face (0deg) */
+            transform: rotateY(0deg);
+            text-align: left;
+            /* Added margin for clean look without the icon */
+            padding-top: 50px; 
+        }
+
+        .card-back {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+            /* KEY CHANGE: The back face must be rotated 180 degrees relative to the inner container */
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        /* Project Icon Styling (Front) - Hidden for cleaner look */
+        .project-icon {
+            display: none; 
+        }
+
+        /* Large Icon Styling (Back) */
+        .project-icon-large {
+            font-size: 6em;
+            color: var(--bg-white);
+            margin-bottom: 20px;
+        }
+        
+        /* Back Face Text Styling */
+        .card-back p {
+            color: var(--light-text);
+            font-size: 1.2em;
+            font-weight: 500;
+            max-width: 90%;
+            margin: 0;
+            text-align: center;
+        }
+        
+        /* New class for technology list on the back face */
+        .card-back .tech-list-back {
+            font-size: 1.1em;
+            font-weight: 500;
+            margin-top: 25px;
+            color: #a0c0ff; /* Light blue color for tech */
+            text-align: center;
+            line-height: 1.4;
+            max-width: 90%;
+        }
+
+
+        /* Front Face Content Styling */
+        .card-front h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6em;
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        /* List and List Item Styling for the Front Card */
+        .card-front ul {
+            list-style-type: disc; /* Use standard bullets */
+            padding-left: 20px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            flex-grow: 1; /* Allow the list to take up available space */
+            overflow-y: auto; /* Allow scrolling if list is too long (though we target minimal height) */
+            text-align: left;
+            color: #444;
+        }
+
+        .card-front ul li {
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        
+        /* Custom Audio Player Styling */
+        .project-audio-player {
+            width: 100%;
+            margin: 15px 0 20px 0;
+            border-radius: 6px;
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            padding: 5px;
+        }
+
+        .card-front a.button {
+            margin-top: auto;
+            align-self: center; 
+            background-color: var(--secondary-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .card-front a.button:hover {
+            background-color: var(--highlight-blue);
+            transform: none;
+        }
+        
+        /* Extracurricular List Styling */
+        .extracurricular-list {
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px 0;
+            line-height: 1.5;
+        }
+
+        .extracurricular-list p {
+            margin: 10px 0;
+            font-size: 1.1em;
+            color: var(--dark-text);
+            text-align: left;
+        }
+
+        .extracurricular-list i {
+            margin-right: 15px;
+            color: var(--highlight-blue);
+            font-size: 1.3em;
+            min-width: 25px; 
+            display: inline-block;
+            text-align: center;
+        }
+
+        /* Footer Styling */
+        .footer {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+            text-align: center;
+            padding: 30px 0;
+            border-top: 2px solid var(--secondary-blue);
+            font-size: 0.9em;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 900px) {
+             /* Adjust grid for medium screens to ensure two columns still fit well */
+            .project-grid {
+                grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .language-switch {
+                position: static;
+                margin-bottom: 20px;
+            }
+            .navbar ul {
+                gap: 15px;
+            }
+            .navbar a {
+                font-size: 1em;
+                padding: 8px 12px;
+            }
+            .section {
+                padding: 60px 0;
+            }
+            .section-content {
+                padding: 40px 20px;
+            }
+            .section h1 {
+                font-size: 2.5em;
+            }
+            .section h2 {
+                font-size: 2em;
+            }
+            .project-grid {
+                /* Force single column for mobile readability */
+                grid-template-columns: 1fr;
+            }
+            /* Card Height Adjustment for Mobile */
+            .project-card {
+                min-height: 550px; 
+            }
+        }
+    </style>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- Language Switch (UX Improvement) -->
+    <div class="language-switch">
+        <a href="es.html" target="_blank" rel="noopener noreferrer">ES</a>
+    </div>
+
+    <!-- Navbar (Simplified) -->
+    <nav class="navbar">
+        <div class="container">
+            <ul>
+                <!-- Updated Navigation Order -->
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="section">
+        <div class="container section-content">
+            <!-- Note: The actual image file "files/portrait.JPG" must be provided by you. -->
+            <img class="profile-photo" src="files/portrait.JPG" alt="Portrait of Enrique Aranda">
+            <h1>Enrique Aranda</h1>
+            <h3>Fourth-Year Computer Science Student | Web Developer & ML Engineer</h3>
+            <p style="text-align: center; max-width: 600px;">Fourth-year undergraduate student in Computer Science searching for a full-time position where I can apply my skills as a Web Developer or Machine Learning Engineer.</p>
+            
+            <!-- UX Improvement: Social Bar -->
+            <div class="social-bar">
+                <a href="https://www.linkedin.com/in/enrique-aranda-jr/" target="_blank" rel="noopener noreferrer" class="social-icon" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/earanda4/" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:enriquearandajr@gmail.com" class="social-icon" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+
+            <!-- UX Improvement: Primary CTA to Projects -->
+            <a href="#projects" class="button">View My Projects</a>
+            <a href="files/Resume-2025.pdf" target="_blank" rel="noopener noreferrer" class="button">View My Resume</a>
+        </div>
+    </section>
+
+    <!-- Projects Section (MOVED UP) -->
+    <section id="projects" class="section">
+        <div class="container section-content">
+            <h2>Featured Projects</h2>
+            <p style="text-align: center; max-width: 600px; margin-bottom: 30px;">
+                Click any card to view more. 
+            </p>
+            <div class="project-grid">
+                
+                <!-- PROJECT 1: RISC Processor (Flippable Card) -->
+                <div class="project-card" data-icon-class="fas fa-microchip">
+                    <div class="card-inner">
+                        <!-- Card Front (Project Details) -->
+                        <div class="card-face card-front">
+                            <h4>Custom Reduced Instruction Set Computer (RISC) Processor</h4>
+                            <ul>
+                                <li>I led the project by outlining our RISC processor architecture with fixed 9-bit instructions and 8-bit data for eight general purpose registers.</li>
+                                <li>I helped assemble our processor components in SystemVerilog and created a Python-based assembler to convert ARM functions into our processor's custom machine code.</li>
+                                <li>We successfully implemented a functional custom processor and its toolchain in one month.</li>
+                            </ul>
+                            <a href="https://github.com/earanda4/RISC-Processor" target="_blank" rel="noopener noreferrer" class="button">
+                                View on GitHub
+                            </a>
+                        </div>
+                        <!-- Card Back (Icon and Tech Stack) -->
+                        <div class="card-face card-back">
+                            <i class="fas fa-microchip project-icon-large"></i>
+                            <p>Custom RISC Processor</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROJECT 2: Music Generation (Flippable Card) -->
+                <div class="project-card" data-icon-class="fas fa-headphones-alt">
+                    <div class="card-inner">
+                        <!-- Card Front (Project Details) -->
+                        <div class="card-face card-front">
+                            <h4>Music Generation with Recurrent Neural Networks (RNNs)</h4>
+                            <ul>
+                                <li>I designed a symbolic music generation model using RNNs trained on Musical Instrument Data Interface (MIDI) datasets.</li>
+                                <li>I incorporated `miditoolkit` to extract features and improved the model's accuracy by 12% through hyperparameter optimization, resulting in a unique piece of music.</li>
+                            </ul>
+                            <!-- Audio Player -->
+                            <audio controls class="project-audio-player">
+                                <!-- IMPORTANT: Replace the 'src' below with the actual URL to hosted MP3 file. -->
+                                <source src="files/multi_RNN_10_tavern.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                            <a href="https://github.com/earanda4/ML-Music-Generation" target="_blank" rel="noopener noreferrer" class="button">
+                                View on GitHub
+                            </a>
+                        </div>
+                        <!-- Card Back (Icon and Tech Stack) -->
+                        <div class="card-face card-back">
+                            <i class="fas fa-headphones-alt project-icon-large"></i>
+                            <p>Music Generation with RNNs</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROJECT 3: Moody Melodies (Flippable Card) -->
+                <div class="project-card" data-icon-class="fab fa-spotify">
+                    <div class="card-inner">
+                        <!-- Card Front (Project Details) -->
+                        <div class="card-face card-front">
+                            <h4>Moody Melodies (React Application)</h4>
+                            <ul>
+                                <li>I led the backend development of this React application, which aimed to generate a mood-catered playlist using the Spotify API.</li>
+                                <li>I designed a recommendation system by mapping specific feelings to API parameter values.</li>
+                                <li>I mentored teammates to complete a swift, deployable product with quality results.</li>
+                            </ul>
+                            <a href="https://github.com/earanda4/Moody-Melodies-App" target="_blank" rel="noopener noreferrer" class="button">
+                                View on GitHub
+                            </a>
+                        </div>
+                        <!-- Card Back (Icon and Tech Stack) -->
+                        <div class="card-face card-back">
+                            <i class="fab fa-spotify project-icon-large"></i>
+                            <p>Moody Melodies</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- PROJECT 4: UCSD CAPEs Course Analysis and Visualization (NEW CARD) -->
+                <div class="project-card" data-icon-class="fas fa-chart-line">
+                    <div class="card-inner">
+                        <!-- Card Front (Project Details) -->
+                        <div class="card-face card-front">
+                            <h4>UCSD Course And Professor Evaluations (CAPEs) Analysis and Visualization</h4>
+                            <ul>
+                                <li>I helped build an automated Python script using `BeautifulSoup` to scrape, clean, and structure data from the UCSD CAPEs website for over 500 courses.</li>
+                                <li>Our project provided students with a user-friendly tool for course planning based on historical data.</li>
+                            </ul>
+                            <a href="https://github.com/earanda4/CAPES-Analysis" target="_blank" rel="noopener noreferrer" class="button">
+                                View on GitHub
+                            </a>
+                        </div>
+                        <!-- Card Back (Icon and Tech Stack) -->
+                        <div class="card-face card-back">
+                            <i class="fas fa-chart-line project-icon-large"></i>
+                            <p>UCSD CAPEs Machine Learning Exploration</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- END NEW CARD -->
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section (MOVED DOWN) -->
+    <section id="about" class="section">
+        <div class="container section-content">
+            <h2>About Me</h2>
+            <p>
+                My passion for computer science dates back to fourth grade, where the Gifted and Talented Education (G.A.T.E.) program introduced me to coding. The programs and games I was able to make in Scratch were mind-blowing and allowed me to express my creativity and indulge in my curiosity. This enthusiasm continued into middle and high school, where I joined the Robotics club and helped out the software team for our robot. After achieving excellent scores on my AP Computer Science exams, I decided I wanted to major in computer science and pursue what I love as a career. Now, with the skills I've practiced in university, I can once again express my creativity through projects like this website, and I look forward to continuing to learn throughout my career.
+            </p>
+            
+            <!-- Dynamic Component 1: Skills Tag Cloud -->
+            <h3 style="margin-top: 40px; text-align: center;">My Technical Skills</h3>
+            <div id="skills-cloud" class="skills-container">
+                <!-- Skills will be dynamically injected here -->
+            </div>
+            <!-- End Skills Tag Cloud -->
+
+        </div>
+    </section>
+
+    <!-- Extracurricular Section (Updated with Icons) -->
+    <section id="extracurricular" class="section">
+        <div class="container section-content">
+            <h2>Extracurriculars</h2>
+            <div class="extracurricular-list">
+                <p>Big Back Club - Co-Founder</p>
+                <p>Triton NeuroTech - Member</p>
+                <p>Society of Hispanic Professional Engineers - Member</p>
+                <p>ACM at UC San Diego - Member</p>
+            </div>
+            <p style="text-align: center; margin-top: 30px;">View the website I've developed for UCSD's Big Back Club.</p>
+            <a
+                href="UCSDclub/bigbackclub.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button"
+            >
+                Visit UCSD Club Website
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container section-content">
+            <h2>Contact</h2>
+            <p style="text-align: center;">
+                Feel free to reach out if you have any questions or are interested in connecting about potential roles!
+            </p>
+            <a href="mailto:enriquearandajr@gmail.com" class="button">enriquearandajr@gmail.com</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Designed and Developed by Enrique Aranda</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for dynamic components -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- Dynamic Component 1: Skills Tag Cloud Injection ---
+            
+            // Extracted from your resume (Languages, Frameworks, Libraries)
+            const skills = [
+                'Python', 'Java', 'C', 'C++', 'HTML', 'CSS', 'JavaScript', 'SQL',
+                'ARM assembly', 'SystemVerilog', 'TypeScript', 'React', 'Node.js', 
+                'JUnit', 'Spotify API', 'PyTorch', 'Git', 'VSCode'
+            ];
+
+            const skillsCloud = document.getElementById('skills-cloud');
+
+            skills.forEach(skill => {
+                const tag = document.createElement('span');
+                tag.classList.add('skill-tag');
+                tag.textContent = skill;
+                skillsCloud.appendChild(tag);
+            });
+
+
+            // --- Dynamic Component 2: Scroll-Based Project Fade-In Animation ---
+            
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            const checkVisibility = () => {
+                projectCards.forEach(card => {
+                    const rect = card.getBoundingClientRect();
+                    const threshold = 0.8;
+                    const isVisible = (
+                        rect.top <= (window.innerHeight - rect.height * threshold) && 
+                        rect.bottom >= (rect.height * threshold)
+                    );
+
+                    if (isVisible) {
+                        card.classList.add('is-visible');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', checkVisibility);
+            window.addEventListener('resize', checkVisibility);
+            checkVisibility(); 
+            
+            // --- Card Flip Functionality (Click Only) ---
+            
+            projectCards.forEach(card => {
+                // Attach click listener to the whole project card element
+                card.addEventListener('click', (event) => {
+                    // Prevent the flip if a link/button inside the card is clicked (including the audio controls)
+                    // We check if the target is a link, button, or part of the audio controls
+                    if (event.target.closest('a') || event.target.closest('button') || event.target.closest('audio')) {
+                        return;
+                    }
+                    
+                    // Toggle the 'flipped' class on the inner container
+                    const innerCard = card.querySelector('.card-inner');
+                    if (innerCard) {
+                        innerCard.classList.toggle('flipped');
+                    }
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
