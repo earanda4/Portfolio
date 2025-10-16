@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enrique Aranda - Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600;700&display=swap"
+        rel="stylesheet"
+    />
+    <style>
+        /* Modernized Styling */
+        :root {
+            --primary-blue: #1a2b49;
+            --secondary-blue: #2c4266;
+            --highlight-blue: #4a69bd;
+            --light-blue: #5c7cfa;
+            --dark-text: #222;
+            --light-text: #f0f0f0;
+            --bg-light: #f4f7f6;
+            --bg-white: #fff;
+            --border-color: #e0e0e0;
+        }
+
+        /* Basic Reset & Body Styling */
+        body {
+            font-family: 'Inter', sans-serif; /* Professional body font */
+            background-color: var(--bg-light); /* Off-white background */
+            color: var(--dark-text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: var(--primary-blue);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--secondary-blue);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: var(--light-text);
+            font-size: 1.1em;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+            position: relative;
+        }
+
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--light-blue);
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        .navbar a:hover::after,
+        .navbar a:focus::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .navbar a:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .section-content {
+            background-color: var(--bg-white);
+            padding: 60px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
+        }
+
+        .section h1, .section h2 {
+            font-family: 'Poppins', sans-serif; /* Modern, bold heading font */
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .section h1 {
+            font-size: 3.5em;
+            letter-spacing: -1px;
+        }
+
+        .section h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+
+        .section h3 {
+            font-size: 1.5em;
+            color: var(--dark-text);
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .section p {
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            color: #555;
+        }
+
+        .section img.profile-photo {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border: 4px solid var(--highlight-blue);
+            border-radius: 50%;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .button {
+            display: inline-block;
+            background-color: var(--highlight-blue);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .button:hover {
+            background-color: var(--light-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Project Grid Styling */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background-color: var(--bg-white);
+            color: var(--dark-text);
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6em;
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .project-card p {
+            font-size: 1em;
+            color: #444;
+            margin-bottom: 15px;
+            flex-grow: 1; /* Allows description to take up space */
+        }
+
+        .project-card .tech-list {
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .project-card a.button {
+            margin-top: auto;
+            align-self: flex-start;
+            background-color: var(--secondary-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .project-card a.button:hover {
+            background-color: var(--highlight-blue);
+            transform: none; /* Override general button hover effect */
+        }
+
+        /* Footer Styling */
+        .footer {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+            text-align: center;
+            padding: 30px 0;
+            border-top: 2px solid var(--secondary-blue);
+            font-size: 0.9em;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .navbar ul {
+                gap: 15px;
+            }
+            .navbar a {
+                font-size: 1em;
+                padding: 8px 12px;
+            }
+            .section {
+                padding: 60px 0;
+            }
+            .section-content {
+                padding: 40px 20px;
+            }
+            .section h1 {
+                font-size: 2.5em;
+            }
+            .section h2 {
+                font-size: 2em;
+            }
+            .section h3 {
+                font-size: 1.2em;
+            }
+            .section img.profile-photo {
+                width: 150px;
+                height: 150px;
+            }
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="files/Resume CS-I.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
+                <li><a href="https://www.linkedin.com/in/enrique-aranda-jr/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href="https://github.com/earanda4/" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a href="es.html" target="_blank" rel="noopener noreferrer">Spanish</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="section">
+        <div class="container section-content">
+            <img class="profile-photo" src="files/portrait.JPG" alt="Enrique Aranda's Portrait">
+            <h1>Enrique Aranda</h1>
+            <h3>Computer Science B.S. & General Biology Minor</h3>
+            <p>I'm a fourth-year Computer Science student at UC San Diego with a passion for building, creating, and exploring the intersections of technology and biology. Welcome to my portfolio!</p>
+            <a href="#about" class="button">Learn More About Me</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container section-content">
+            <h2>About Me</h2>
+            <p>
+                My name is Enrique, and I am currently a Fourth-Year at University of California, San Diego
+                pursuing a Bachelor's in Computer Science and minor in General Biology. I'm passionate in Machine Learning, Cybersecurity, Computational Biology, and Software Engineering.
+            </p>
+            <p>
+                My passion for computer science stems from the fourth grade, where the Gifted and Talented Education (G.A.T.E.) program introduced me to coding. The programs and games I was able to make in Scratch were mindblowing to me and allowed me to express my creativity and indulge in my curiosity. This enthusiasm carried on to middle school and high school where I joined the Robotics club and became part of the software team for our robot. After acing my AP Computer Science exams, I decided I wanted to major in computer science and pursue what I love for my career. Now, with the skills I’ve practiced in university, I’m once again able to express my creativity through projects such as this website, and I anticipate learning more throughout my career.
+            </p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container section-content">
+            <h2>My Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h4>Custom RISC Processor</h4>
+                    <p>
+                        Collaborated with a teammate to develop a Reduced Instruction Set Computer (RISC) processor under specific constraints such as fixed 9-bit instructions and 8 general purpose registers storing only 8 bits of data. In one month, we assembled components in SystemVerilog for the processor and created an assembler that would convert our ARM functions into machine code that our processor would then use to provide output.  
+                    </p>
+                    <p class="tech-list">Technologies: Python, ARM, Assembly, SystemVerilog, C</p>
+                    <a href="https://github.com/earanda4/Custom-RISC-Processor" target="_blank" rel="noopener noreferrer" class="button">
+                        View on GitHub
+                    </a>
+                </div>
+                <div class="project-card">
+                    <h4>MUSIC GENERATION WITH RNNS</h4>
+                    <p>
+                        Worked in a team of 4 to design and implement a symbolic music generation model using Recurrent Neural Networks (RNNs) trained on MIDI datasets. We extracted features such as pitch, duration, and note sequences using miditoolkit, and trained the model to predict tokenized note sequences with a language modeling objective.
+                    </p>
+                    <p class="tech-list">Technologies: Python, PyTorch, miditoolkit, FluidSynth</p>
+                    <a href="https://github.com/earanda4/ML-Music-Generation" target="_blank" rel="noopener noreferrer" class="button">
+                        View on GitHub
+                    </a>
+                </div>
+                <div class="project-card">
+                    <h4>MOODY MELODIES</h4>
+                    <p>
+                        Worked in a team of 7 to create a React web app where students can create an account and fill out a survey to receive a playlist based on their current mood. We achieved this using the Spotify API to implement a recommendation system where a certain emotion is linked to certain parameters that would return an appropriate list of songs.
+                    </p>
+                    <p class="tech-list">Technologies: HTML, CSS, React, MongoDB, Spotify API</p>
+                    <a href="https://github.com/earanda4/Moody-Melodies-App" target="_blank" rel="noopener noreferrer" class="button">
+                        View on GitHub
+                    </a>
+                </div>
+                <div class="project-card">
+                    <h4>UCSD CAPES MACHINE LEARNING EXPLORATION</h4>
+                    <p>
+                        Worked in a team of 10 using machine learning methods to investigate the relationship between several classroom metrics and their effects on student success. We used deep neural networks to derive data from UCSD's Course and Professor Evaluations database and display a predictive model that would highlight certain patterns.
+                    </p>
+                    <p class="tech-list">Technologies: Python, pandas, matplotlib, seaborn, sklearn</p>
+                    <a href="https://github.com/earanda4/CAPES_ML_Exploration" target="_blank" rel="noopener noreferrer" class="button">
+                        View on GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- School Club Section -->
+    <section id="school-club" class="section">
+        <div class="container section-content">
+            <h2>Recent Project</h2>
+            <p>
+                I've developed a website for my club at UCSD, a great example of my web development skills.
+            </p>
+            <a
+                href="https://ucsdbigbacks.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button"
+            >
+                Visit My UCSD Club Website
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container section-content">
+            <h2>Contact</h2>
+            <p>
+                Feel free to reach out if you have any questions or just want to connect!
+            </p>
+            <a href="mailto:enriquearandajr@gmail.com" class="button">Email: enriquearandajr@gmail.com</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Web Design and Development by Enrique Aranda</p>
+        </div>
+    </footer>
+</body>
+</html>
